@@ -3,17 +3,17 @@ package scenarios;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class AndroidSetup {
     protected AndroidDriver driver;
 
-//    final String testAppPackage = "com.android.vending";
-    final String testAppPackage = "com.google.android.apps.maps";
+    File appDir = new File("app");
+    File app = new File(appDir, "base.apk");
 
-    String udid = "4b494ddc";
+    final String udid = "4b494ddc";
 
     protected void prepareAndroidForAppium() throws MalformedURLException {
 
@@ -21,10 +21,8 @@ public class AndroidSetup {
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
         capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "");
-        capabilities.setCapability(MobileCapabilityType.APP, testAppPackage);
-//        capabilities.setCapability(MobileCapabilityType.APP_ACTIVITY, ".AssetBrowserActivity");
+        capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
         capabilities.setCapability(MobileCapabilityType.UDID, udid);
-        capabilities.setCapability(MobileCapabilityType.ORIENTATION, "portrait");
 
         this.driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub")
                 , capabilities);
