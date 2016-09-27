@@ -13,7 +13,7 @@ public class AndroidSetup {
     File appDir = new File("app");
     File app = new File(appDir, "base.apk");
 
-    final String udid = "4b494ddc";
+    final String udid = "qweasd";
 
     protected void prepareAndroidForAppium() throws MalformedURLException {
 
